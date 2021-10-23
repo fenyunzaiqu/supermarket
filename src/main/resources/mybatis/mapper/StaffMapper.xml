@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="supermarket.mapper.StaffMapper">
+    <resultMap id="BaseResultMap" type="supermarket.dto.staffDto">
+        <id column="sf_name" property="name"/>
+        <id column="sex" property="sex"/>
+        <id column="identity" property="identity"/>
+        <id column="sf_phone" property="phoneNum"/>
+        <id column="sf_status" property="workState"/>
+    </resultMap>
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(1) from staff s
+        <if test="search != null and search != ''">
+            where s.sf_name regexp #{search}
+        </if>
+    </select>
+    
+    <select id="getStaffBypage" resultMap="BaseResultMap">
+        select s.sf_name as s_name,
+               s.sex as
+        from staff select
+        <if test="search != null and search != ''">
+
+        </if>
+    </select>
+</mapper>

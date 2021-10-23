@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/AdminMpper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/GoodsMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/PurchaseMapper.xml" dialect="BigQuery" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/SellRecordMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/SellgoodMapper.xml" dialect="GenericSQL" />
+  </component>
+</project>

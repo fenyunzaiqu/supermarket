@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="supermarket.mapper.goodMapper">
+
+    <!--分页查询商品信息-->
+    <select id="selectGoodByPage" resultType="Goods" parameterType="map">
+        select * from goods where goods_status != '0' limit #{start},#{size}; /*sql写法，从start+1条数据开始，读取size条数据*/
+    </select>
+
+    <!--查询库存不足的商品-->
+    <select id="selectGoodLessByPage" resultType="Goods">
+        select * from goodss where amount &lt;50 limit #{start},#{size};
+    </select>
+
+    <!--查询记录条数-->
+    <select id="countGoods" resultType="int">
+        select count(*) from goods where goods_status != '0';
+    </select>
+
+    <!--查询库存不足的商品-->
+    <select id="countGoodless" resultType="int">
+        select count(*) from goods where amount &lt;50;
+    </select>
+
+    <!--根据商品编号查找商品信息-->
+    <select id="selectGoodsById" resultType="Goods">
+        select * from goods where goods_id=#{goods_Id} and goods_status != '0';
+    </select>
+
+    <!--通过商品名字查找商品编号-->
+    <select id="selectIdByName" parameterType="string" resultType="Goods">
+        select * from goods
+        <if test="name!=null">
+            where goods_name like concat ('%',#{name},'%')
+        </if>
+        ;
+    </select>
+
+    <!--增加商品信息-->
+    <insert id="addGoods" parameterType="Goods">
+        insert into goods values (#{goodsId}, #{goodsName}, #{brand}, #{price}, #{amount},#{unit},#{goodStatus});
+    </insert>
+
+    <!--修改商品信息-->
+    <update id="updateGoods" parameterType="Goods">
+        update goods
+        <set>
+            <if test="goodsId!=null"> goods_id=#{goodsId},</if>
+            <if test="goodsName!=null"> goods_name=#{goodsName},</if>
+            <if test="brand!=null"> brand=#{brand},</if>
+            <if test="price!=null"> price=#{price},</if>
+            <if test="amount!=null"> amount=#{amount},</if>
+            <if test="unit!=null">unit=#{unit},</if>
+            <if test="goodStatus!=null">goods_status=#{goodStatus}</if>
+        </set>
+        where goods_id=#{goodsId};
+    </update>
+
+    <!--通过商品名字查砸后商品编号-->
+    <select id="selectNameById" resultType="string">
+        select goods_name from goods where goods_id=#{goodsId};
+    </select>
+</mapper>
