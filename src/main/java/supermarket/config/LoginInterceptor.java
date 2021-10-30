@@ -18,26 +18,33 @@ public class LoginInterceptor implements HandlerInterceptor {
     private static final long Day = 86400000;
 
     /*处理请求之前调用，验证是否存在口令*/
+    /*
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler)
         throws Exception{
-        String token = request.getParameter("Authorization");
+        String token = request.getHeader("Authorization");
         if(token!=null && !"".equals(token)){//验证token不为空
+            System.out.println(3);
             System.out.println("token为: "+token);
+            System.out.println(4);
             Admin dbAdmin = adminmapper.selectAdminByToken(token);//在数据库里找出符合对应的User用户
+            System.out.println(5);
             if(dbAdmin == null){
                 System.out.println("该用户不存在");
                 return false;
             }
+            System.out.println(6);
             System.out.println("用户为"+dbAdmin);
-            if((System.currentTimeMillis() - dbAdmin.getCreateTime()) > DAY){
+            if((System.currentTimeMillis() - dbAdmin.getCreateTime().getTime()) > DAY){
                 request.setAttribute("Authorization",null);
                 System.out.println("验证口令token失效，请重新登陆");
                 return false;
             }
         }
+        System.out.println(7);
         return true;
     }
+    */
 
     /*
     @Override

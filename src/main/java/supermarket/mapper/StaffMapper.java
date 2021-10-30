@@ -22,8 +22,8 @@ public interface StaffMapper {
     * @param pageSize 查询条数
     * @param staffName 查询的员工名
     * @return 员工集合*/
-    List<staffDto> getStaffBypage(@Param("start")Integer start,@Param("pageSize")Integer pageSize,
-                                  @Param("staffName")String staffName); //这里@param是在注解
+    List<staffDto> getStaffByPage(@Param("start")Integer start, @Param("pageSize")Integer pageSize,
+                                  @Param("search")String search); //这里@param是在注解
 
     /*
     * 根据员工编号查询员工

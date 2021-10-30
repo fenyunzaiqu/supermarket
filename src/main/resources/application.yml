@@ -1,7 +1,15 @@
-server:127.0.0.1
-port:3306
-
 mybatis:
   type-aliases-package: supermarket.model
   mapper-locations: classpath:mybatis/mapper/*.xml
   config-location: classpath:mybatis/mybatis-config.xml
+
+
+spring:
+  datasource:
+    username: root
+    password: xc;123236514
+    url: jdbc:mysql://localhost:3306/supermarket
+
+server:
+  address: 127.0.0.1
+  port: 8080

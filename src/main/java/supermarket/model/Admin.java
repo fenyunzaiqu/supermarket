@@ -1,11 +1,13 @@
 package supermarket.model;
 
+import java.util.Date;
+
 public class Admin {
     private Integer adminID;
     private String adminName;
     private String adminPassword;
-    private String token;
-    private Long createTime;
+    //private String token;
+    private Date createTime;
 
     public Integer getAdminID(){
         return adminID;
@@ -18,11 +20,11 @@ public class Admin {
         return adminPassword;
     }
 
-    public String getToken() {
+    /*public String getToken() {
         return token;
-    }
+    }*/
 
-    public Long getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
@@ -38,21 +40,23 @@ public class Admin {
         this.adminName = adminName;
     }
 
-    public void setCreateTime(Long createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
+    /*
     public void setToken(String token) {
         this.token = token;
     }
+    */
 
-    Admin(Integer adminID, String adminPassword, String adminName, Long createTime, String token)
+    Admin(Integer adminID, String adminPassword, String adminName, Date createTime)
     {
         this.adminID=adminID;
         this.adminPassword=adminPassword;
         this.adminName=adminName;
         this.createTime=createTime;
-        this.token=token;
+        //this.token=token;
     }
 
 }

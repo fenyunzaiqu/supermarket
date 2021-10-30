@@ -19,10 +19,11 @@ public class StaffController {
     * @param request Http请求
     * @return 查询结果*/
     @GetMapping("/basicInfo")
-    private resultDto getAllEmployyeeByPage(HttpServletRequest request){
+    private resultDto getAllEmployeeByPage(HttpServletRequest request){
         Integer page = Integer.parseInt(request.getParameter("page"));
         Integer size = Integer.parseInt(request.getParameter("size"));
         String search = request.getParameter("search");
+        System.out.println(search+"Controller的search");
         return staffService.getAllStaffByPage(page,size,search);
     }
 }

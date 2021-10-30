@@ -5,6 +5,6 @@ import supermarket.model.Admin;
 public interface adminMapper {
     Admin selectAdminByUsername(String name);
     void addUser(Admin admin);
-    Admin selectAdminByToken(String token);
+    //Admin selectAdminByToken(String token);
     int updateAdmin(Admin admin);
 }

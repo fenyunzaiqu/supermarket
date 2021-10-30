@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableEncryptableProperties
 @MapperScan("supermarket.mapper")
-public class SupermarktApplication {
+public class SupermarketApplication {
     public static void main(String[] args){
-        SpringApplication.run(SupermarktApplication.class,args);
+        SpringApplication.run(SupermarketApplication.class,args);
     }
 }

@@ -13,7 +13,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http)throws Exception{
         //放行所有权限
         http.authorizeRequests().antMatchers("/**").permitAll()
-                .and().csrf().disable();//并关闭默认的crsf认证
+                .and().csrf().disable();//并关闭默认的csrf认证
     }
 
     @Override
@@ -22,7 +22,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().
                 withUser("admin").password("123456").roles("ADMIN");
         auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder()). //在外面的类把PasswordEncoder重写了（Override），这里就不用配置match和encode了
-                withUser("zn").password("zn").roles("ADMIN");
+                withUser("zhounan").password("123456").roles("ADMIN");
     }
 
     @Override

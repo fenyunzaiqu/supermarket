@@ -9,6 +9,7 @@ import supermarket.dto.resultDto;
 import supermarket.mapper.adminMapper;
 import supermarket.model.Admin;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Service //@Service注解用于类上，标记当前类是一个service类，加上该注解会将当前类自动注入到spring容器中，不需要再在applicationContext.xml文件定义bean了。
@@ -25,13 +26,17 @@ public class adminService {
     * return结果返回给dto层*/
     public resultDto login(Admin admin){
         Admin dbAdmin = adminmapper.selectAdminByUsername(admin.getAdminName()); //创造一个和admin同名的对象
+        System.out.println(1);
         if(dbAdmin!=null){
-            if(bCryptPasswordEncoder.matches(admin.getAdminPassword(),dbAdmin.getAdminPassword()))//密码验证
+            if((admin.getAdminPassword().equals(dbAdmin.getAdminPassword())))//密码验证
             {
                 String token = UUID.randomUUID().toString();//生成唯一标识符
-                dbAdmin.setCreateTime(System.currentTimeMillis());//获取当前时间
-                dbAdmin.setToken(token);//设置口令
+                Date date = new Date(System.currentTimeMillis());
+                dbAdmin.setCreateTime(date);//获取当前时间
+                //dbAdmin.setToken(token);//设置口令
                 int updated = adminmapper.updateAdmin(dbAdmin);//更新用户
+                System.out.println(updated);
+                System.out.println("6");
                 if(updated == 1){ //给前端数据，即Dto层里
                     LoginDto loginDto = new LoginDto();
                     loginDto.setToken(token);
